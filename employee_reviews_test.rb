@@ -9,4 +9,12 @@ class EmployeeReviewsTest < Minitest::Test
 
   end
 
+  def test_classes_exist
+      assert Employee
+      assert Department
+    end
+
+  def test_create_department
+    pickle_co = Department.new("Pickle Co.")
+  end
 end
