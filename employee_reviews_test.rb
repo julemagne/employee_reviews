@@ -21,4 +21,11 @@ class EmployeeReviewsTest < Minitest::Test
   def test_create_employee
     pete_pickles = Employee.new("Pete Pickles", "pete@pickles.com", "919-288-2888", 500000)
   end
+
+  def add_employee_to_department
+    assert Department.new("Board", Employee.new("Pete Pickles", "pete@pickles.com", "919-288-2888", 500000))
+  end
+
+
+
 end
