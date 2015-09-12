@@ -19,8 +19,8 @@ class Department
     for employee_object in @employees
        if employee_object.positive == true then
          employee_object.salary += the_raise
-         end
        end
+    end
   end
 
 end
