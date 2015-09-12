@@ -2,6 +2,7 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './department.rb'
 require './employee.rb'
+require 'byebug'
 
 class EmployeeReviewsTest < Minitest::Test
 
@@ -16,10 +17,12 @@ class EmployeeReviewsTest < Minitest::Test
 
   def test_create_department
     pickle_co = Department.new("Pickle Co.")
+    assert pickle_co
   end
 
   def test_create_employee
     pete_pickles = Employee.new("Pete Pickles", "pete@pickles.com", "919-288-2888", 500000)
+    assert pete_pickles
   end
 
   def test_add_employee_to_department
