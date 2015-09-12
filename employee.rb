@@ -1,5 +1,5 @@
 class Employee
-  attr_reader :name, :salary, :review, :all
+  attr_reader :name, :salary, :review, :positive, :all
 
   def initialize(name, email, phone, salary)
     @name = name
@@ -7,6 +7,7 @@ class Employee
     @phone = phone
     @salary = salary
     @review = nil
+    @positive = false
     @all = []
     @all << self
   end
@@ -14,6 +15,11 @@ class Employee
   def give_employee_review(string)
     @review = string
   end
+
+  def satisfaction(true_or_false)
+    @positive = true_or_false
+  end
+
 
 
 

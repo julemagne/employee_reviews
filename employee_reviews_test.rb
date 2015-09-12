@@ -62,9 +62,13 @@ class EmployeeReviewsTest < Minitest::Test
     assert wanda.review == "Wanda has been an incredibly consistent and effective developer.  Clients are always satisfied with her work, developers are impressed with her productivity, and she's more than willing to help others even when she has a substantial workload of her own.  She is a great asset to Awesome Company, and everyone enjoys working with her.  During the past year, she has largely been devoted to work with the Cement Company, and she is the perfect woman for the job.  We know that work on a single project can become monotonous, however, so over the next few months, we hope to spread some of the Cement Company work to others.  This will also allow Wanda to pair more with others and spread her effectiveness to other projects."
   end
 
-
-
-
+  def test_employee_performance_review
+    jarl =  Department.new("Jarl")
+    wanda = Employee.new("Wanda", "wanda@pickles.com", "919-288-2888", 200000)
+    jarl.put_employee_into_department(wanda)
+    wanda.satisfaction(true)
+    assert wanda.positive == true
+  end
 
 
 
