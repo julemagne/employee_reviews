@@ -31,8 +31,12 @@ class EmployeeReviewsTest < Minitest::Test
 
   def test_get_employee_name
     pete_pickles = Employee.new("Pete Pickles", "pete@pickles.com", "919-288-2888", 500000)
-    assert pete_pickles.name
+    assert "Pete Pickles" == pete_pickles.name
   end
 
+  def test_get_employee_salary
+    pete_pickles = Employee.new("Pete Pickles", "pete@pickles.com", "919-288-2888", 500000)
+    assert 500000 == pete_pickles.salary
+  end
 
 end
