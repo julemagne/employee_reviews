@@ -10,11 +10,7 @@ class Department
   end
 
   def add_all_salaries
-    total_salary = 0
-    @employees.each {|employee|
-     total_salary += employee.salary
-    }
-    return total_salary
+    @employees.inject(0) {|sum, employee_object| sum + employee_object.salary}
   end
 
 
