@@ -39,4 +39,19 @@ class EmployeeReviewsTest < Minitest::Test
     assert 500000 == pete_pickles.salary
   end
 
+  def test_get_department_name
+    board =  Department.new("Board")
+    assert "Board" == board.name
+  end
+
+
+
+
+
+
+
+
+
+
+
 end
