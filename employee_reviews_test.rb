@@ -22,10 +22,17 @@ class EmployeeReviewsTest < Minitest::Test
     pete_pickles = Employee.new("Pete Pickles", "pete@pickles.com", "919-288-2888", 500000)
   end
 
-  def add_employee_to_department
-    assert Department.new("Board", Employee.new("Pete Pickles", "pete@pickles.com", "919-288-2888", 500000))
+  def test_add_employee_to_department
+    board =  Department.new("Board")
+    pete_pickles = Employee.new("Pete Pickles", "pete@pickles.com", "919-288-2888", 500000)
+    board.put_employee_into_department(pete_pickles)
+    assert board.employees.include?(pete_pickles)
   end
 
+  def test_get_employee_name
+    pete_pickles = Employee.new("Pete Pickles", "pete@pickles.com", "919-288-2888", 500000)
+    assert pete_pickles.name
+  end
 
 
 end
