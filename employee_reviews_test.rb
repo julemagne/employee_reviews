@@ -44,7 +44,12 @@ class EmployeeReviewsTest < Minitest::Test
     assert "Board" == board.name
   end
 
-
+  def test_department_total_salary
+    board =  Department.new("Board")
+    pete_pickles = Employee.new("Pete Pickles", "pete@pickles.com", "919-288-2888", 500000)
+    board.put_employee_into_department(pete_pickles)
+    assert 500000 == board.add_all_salaries
+  end
 
 
 

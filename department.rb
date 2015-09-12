@@ -9,7 +9,9 @@ class Department
     @employees << employee_object
   end
 
-
+  def add_all_salaries
+    @employees.inject {|sum, employee_object| sum + employee_object.salary}
+  end
 
 
 end
