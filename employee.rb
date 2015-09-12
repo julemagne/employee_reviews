@@ -20,7 +20,9 @@ class Employee
     @positive = true_or_false
   end
 
-
+  def employee_raise(raise_amount)
+    @salary += raise_amount
+  end
 
 
 end
