@@ -14,8 +14,10 @@ class Department
   end
 
   def department_raise
-    raise_amount = 10000
-    yield 
+    @employees.each do |employee|
+      raise_amount = yield(employee)
+      employee.salary += raise_amount
+    end
   end
 
 end

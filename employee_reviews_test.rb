@@ -107,13 +107,16 @@ class EmployeeReviewsTest < Minitest::Test
     Second, when discussing new requirements with project managers, less of the information is retained by Zeke long-term than is expected.  This has a few negative consequences: 1) time is spent developing features that are not useful and need to be re-run, 2) bugs are introduced in the code and not caught because the tests lack the same information, and 3) clients are told that certain features are complete when they are inadequate.  This communication limitation could be the fault of project management, but given that other developers appear to retain more information, this is worth discussing further.")
     yvonne.satisfaction(false)
 
-    minion.department_raise do deserving = minion.employees.reject {|employee_object| employee_object.positive == false || employee_object.salary >= 100000}
-      the_raise = (raise_amount/deserving.length)
-      for employee_object in minion.employees
-           employee_object.salary += the_raise
+    minion.department_raise do |employee|
+      deserving_employees = minion.employees.select { |e| e.positive && e.salary <=100000 }
+      individual_raise_amt = 10000 / deserving_employees.length
+      if deserving_employees.include?(employee)
+        individual_raise_amt
+      else
+        0
       end
     end
-    yield
+
     assert wanda.salary == 95000
     assert xavier.salary == 25000
     assert yvonne.salary == 80000
@@ -149,17 +152,20 @@ class EmployeeReviewsTest < Minitest::Test
     Second, when discussing new requirements with project managers, less of the information is retained by Zeke long-term than is expected.  This has a few negative consequences: 1) time is spent developing features that are not useful and need to be re-run, 2) bugs are introduced in the code and not caught because the tests lack the same information, and 3) clients are told that certain features are complete when they are inadequate.  This communication limitation could be the fault of project management, but given that other developers appear to retain more information, this is worth discussing further.")
     yvonne.satisfaction(false)
 
-    minion.department_raise { |raise_amount| deserving = minion.employees.reject {|employee_object| employee_object.positive == false || employee_object.salary >= 100000}
-      the_raise = (raise_amount/deserving.length)
-      for employee_object in minion.employees
-           employee_object.salary += the_raise
+    minion.department_raise do |employee|
+      deserving_employees = minion.employees.select { |e| e.positive && e.salary <100000 }
+      individual_raise_amt = 10000 / deserving_employees.length
+      if deserving_employees.include?(employee)
+        individual_raise_amt
+      else
+        0
       end
-    }
-    yield
-    assert wanda.salary == 100000
-    assert xavier.salary == 90000
-    assert yvonne.salary == 70000
-    assert zeke.salary == 60000
+    end
+
+    assert_equal wanda.salary, 100000
+    assert_equal xavier.salary, 90000
+    assert_equal yvonne.salary, 70000
+    assert_equal zeke.salary, 60000
   end
 
 
